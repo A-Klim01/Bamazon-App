@@ -82,16 +82,16 @@ function askForQuantity(row) {
     var userQuantity = ans.quantity;
     if(userQuantity>row.stock){
       console.log("insufficent quantity")
-      start() 
+      start()
       
-    }
-    else{
-      makepurchase(row, userquantity)
-
+    }else{
+        makepurchase(row, userquantity)
     }
 
-  })
-}
+    }
+
+  )}
+
 function makepurchase(row, quantity){
   connection.query("UPDATE products SET stock = stock - ? WHERE id = ?", [quantity, row.id], function(err, res){
     console.log("successfully purchase");
