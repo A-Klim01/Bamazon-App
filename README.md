@@ -11,7 +11,7 @@ A bamazon client that will return item data:
 * Price
 * Quantity/Stock
 
-![Customer prompts](./img/id_#ofitems.png)
+![Customer prompts](./img/itemnum.png)
 
 Customer chooses
 * Item, then quantity
