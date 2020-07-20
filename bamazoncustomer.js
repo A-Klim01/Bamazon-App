@@ -2,6 +2,45 @@ var mysql = require("mysql");
 var inquirer = require("inquirer");
 require("console.table");
 
+
+var userName = "";
+
+function welcome() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "Please enter your name."
+        }
+    ]).then(function (user) {
+        console.log("==============================================");
+        console.log("Welcome to Bamazon, " + user.name + "!");
+        console.log("==============================================");
+
+        userName = user.name;
+
+        bamazon();
+    });
+}
+
+function bamazon() {
+  inquirer.prompt([
+      {
+          type: "list",
+          name: "choice",
+          message: "Make a selection:",
+          choices: ["Purchase", "Sell"]
+      }
+
+  ]).then(function (menu) {
+      if (menu.choice === "Sell") {
+          sellSell();
+      }
+      else {
+          buyBuy();
+      }
+  });
+}
 var connection = mysql.createConnection({
   host: "localhost",
 
@@ -13,6 +52,8 @@ var connection = mysql.createConnection({
   password: "root",
   database: "bamazon_DB",
 })
+
+
 
 connection.connect(function (err) {
   if (err) {
